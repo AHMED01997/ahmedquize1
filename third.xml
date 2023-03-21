@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:layout_weight="1.0"
+	android:gravity="center"
+	android:id="@+id/SuccessText">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Congrateulation"
+		android:textStyle="bold"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Correct Answer"
+		android:textStyle="bold"
+		android:id="@+id/score"
+		android:textColor="#11F900"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="InCorrectAnswer"
+		android:textStyle="bold"
+		android:id="@+id/inCorrectAnswer"
+		android:textColor="#F70E00"/>
+
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Start New Quize"
+		android:id="@+id/startNewQuize"
+		android:textStyle="bold"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Text"
+		android:id="@+id/experament"/>
+
+</LinearLayout>
+

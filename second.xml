@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	android:id="@+id/linear"
+	android:orientation="vertical">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Selected Tobic Name"
+		android:textStyle="bold"
+		android:gravity="left|center"
+		android:layout_gravity="center"
+		android:id="@+id/tobicName"/>
+
+	<TextView
+		android:id="@+id/er"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+
+	<TextView
+		android:id="@+id/quistions"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="1/10"/>
+
+	<TextView
+		android:id="@+id/quistion"
+		android:text="quistion is here"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+
+	<Button
+		android:id="@+id/op1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="answer 1"/>
+
+	<Button
+		android:id="@+id/op2"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="answer 2"/>
+
+	<Button
+		android:id="@+id/op3"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="answer 3"/>
+
+	<Button
+		android:id="@+id/op4"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="answer 4"/>
+
+	<Button
+		android:id="@+id/ok"
+		android:layout_width="200dp"
+		android:layout_height="wrap_content"
+		android:text="ok"
+		android:layout_marginTop="22dp"/>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Correct Answer"
+		android:textStyle="bold"
+		android:id="@+id/correctAnswer"
+		android:textColor="#11F900"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="InCorrectAnswer"
+		android:textStyle="bold"
+		android:id="@+id/inCorrectAnswer"
+		android:textColor="#F70E00"/>
+</LinearLayout>
+
