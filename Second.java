@@ -84,10 +84,15 @@ public class Second extends Activity
 		op1.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					selectedOptionByUser = ((Button)v).getText().toString();
+					selectedOptionByUser = op1.getText().toString();
 					quistionList.get(currentQuistionPosition).setUserSelectedAnswer(selectedOptionByUser);
 					// ...
-				}
+					if(!selectedOptionByUser.equals(quistionList.get(currentQuistionPosition).getanswer())){
+						op1.setBackgroundColor(Color.RED);
+						op1.setTextColor(Color.WHITE);}
+						else {revealAnswer();}
+						}
+				
 			});
 		/*op2.setOnClickListener(new View.OnClickListener(){
 
@@ -106,9 +111,13 @@ public class Second extends Activity
 		op2.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					selectedOptionByUser = ((Button)v).getText().toString();
+					selectedOptionByUser = op2.getText().toString();
 					quistionList.get(currentQuistionPosition).setUserSelectedAnswer(selectedOptionByUser);
-					// ...
+					if(!selectedOptionByUser.equals(quistionList.get(currentQuistionPosition).getanswer())){
+						op2.setBackgroundColor(Color.RED);
+						op2.setTextColor(Color.WHITE);}
+					else {revealAnswer();}
+				
 				}
 			});
 
@@ -131,10 +140,14 @@ public class Second extends Activity
 				public void onClick(View v) {
 					selectedOptionByUser = ((Button)v).getText().toString();
 					quistionList.get(currentQuistionPosition).setUserSelectedAnswer(selectedOptionByUser);
-					// ...
+					if(!selectedOptionByUser.equals(quistionList.get(currentQuistionPosition).getanswer())){
+						op3.setBackgroundColor(Color.RED);
+						op3.setTextColor(Color.WHITE);}
+						else {revealAnswer();}
 				}
-			});/*
-		op4.setOnClickListener(new View.OnClickListener(){
+				
+			});
+		/*op4.setOnClickListener(new View.OnClickListener(){
 
 				@Override
 				public void onClick(View p1)
@@ -153,7 +166,11 @@ public class Second extends Activity
 				public void onClick(View v) {
 					selectedOptionByUser = ((Button)v).getText().toString();
 					quistionList.get(currentQuistionPosition).setUserSelectedAnswer(selectedOptionByUser);
-					// ...
+					if(!selectedOptionByUser.equals(quistionList.get(currentQuistionPosition).getanswer())){
+						op4.setBackgroundColor(Color.RED);
+						op4.setTextColor(Color.WHITE);}
+					else {revealAnswer();}
+				
 				}
 			});
 		/*ok.setOnClickListener(new View.OnClickListener(){
@@ -176,11 +193,11 @@ public class Second extends Activity
 				public void onClick(View v) {
 					if (currentQuistionPosition == quistionList.size() - 1) {
 						Intent intent = new Intent(Second.this, Third.class);
-						intent.putExtra("correct", getResult());
-						intent.putExtra("total", quistionList.size());
+						intent.putExtra("correct", getResult()[0]);
+						intent.putExtra("total", getResult()[1]);
 						startActivity(intent);
 					} else {
-						changeNextQuistion();
+						changeNextQuistion ();
 					}
 				}
 			});
@@ -256,7 +273,7 @@ public class Second extends Activity
 		}
 		return incorrectAnswer;
 	}*/
-	public String getResult() {
+	public int []getResult() {
 		int CorrectAnswer = 0;
 		int incorrectAnswer = 0;
 		for (int i = 0; i < quistionList.size(); i++) {
@@ -268,7 +285,7 @@ public class Second extends Activity
 				incorrectAnswer++;
 			}
 		}
-		return  "Correct: " + CorrectAnswer + ", Incorrect: " + incorrectAnswer;
+		return new int[]{CorrectAnswer,incorrectAnswer};
 		
 	}
 	/*private int getCorrectAnswers() {
