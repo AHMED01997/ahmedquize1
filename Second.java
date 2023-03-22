@@ -16,6 +16,7 @@ public class Second extends Activity
 	private Timer quTime;
 	private int totalMinute=0;
 	private  int second =59;
+	private int score = 0;
 	private List<QuistionList>quistionList;
 	LinearLayout l;
 	Button b;
@@ -31,7 +32,7 @@ public class Second extends Activity
 	Button op1,op2,op3,op4;
 	Button ok;
 	
-	
+	boolean coloredOption = false;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -81,7 +82,7 @@ public class Second extends Activity
 					// TODO: Implement this method
 				}
 			});*/
-		op1.setOnClickListener(new View.OnClickListener() {
+		/*op1.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					selectedOptionByUser = op1.getText().toString();
@@ -89,10 +90,29 @@ public class Second extends Activity
 					// ...
 					if(!selectedOptionByUser.equals(quistionList.get(currentQuistionPosition).getanswer())){
 						op1.setBackgroundColor(Color.RED);
-						op1.setTextColor(Color.WHITE);}
-						else {revealAnswer();}
+						op1.setTextColor(Color.WHITE);
+						revealAnswer();}
 						}
 				
+			});*/
+		op1.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					selectedOptionByUser = op1.getText().toString();
+					quistionList.get(currentQuistionPosition).setUserSelectedAnswer(selectedOptionByUser);
+
+					if (selectedOptionByUser.equals(quistionList.get(currentQuistionPosition).getanswer())) {
+						op1.setBackgroundColor(Color.GREEN);
+						op1.setTextColor(Color.WHITE);
+						score++;
+					} else {
+						op1.setBackgroundColor(Color.RED);
+						op1.setTextColor(Color.WHITE);
+						revealCorrectAnswer();
+					}
+
+					updateQuestion();
+				}
 			});
 		/*op2.setOnClickListener(new View.OnClickListener(){
 
@@ -115,8 +135,8 @@ public class Second extends Activity
 					quistionList.get(currentQuistionPosition).setUserSelectedAnswer(selectedOptionByUser);
 					if(!selectedOptionByUser.equals(quistionList.get(currentQuistionPosition).getanswer())){
 						op2.setBackgroundColor(Color.RED);
-						op2.setTextColor(Color.WHITE);}
-					else {revealAnswer();}
+						op2.setTextColor(Color.WHITE);
+					revealAnswer();}
 				
 				}
 			});
@@ -142,8 +162,8 @@ public class Second extends Activity
 					quistionList.get(currentQuistionPosition).setUserSelectedAnswer(selectedOptionByUser);
 					if(!selectedOptionByUser.equals(quistionList.get(currentQuistionPosition).getanswer())){
 						op3.setBackgroundColor(Color.RED);
-						op3.setTextColor(Color.WHITE);}
-						else {revealAnswer();}
+						op3.setTextColor(Color.WHITE);
+				revealAnswer();}
 				}
 				
 			});
@@ -168,8 +188,8 @@ public class Second extends Activity
 					quistionList.get(currentQuistionPosition).setUserSelectedAnswer(selectedOptionByUser);
 					if(!selectedOptionByUser.equals(quistionList.get(currentQuistionPosition).getanswer())){
 						op4.setBackgroundColor(Color.RED);
-						op4.setTextColor(Color.WHITE);}
-					else {revealAnswer();}
+						op4.setTextColor(Color.WHITE);
+					revealAnswer();}
 				
 				}
 			});
@@ -197,7 +217,7 @@ public class Second extends Activity
 						intent.putExtra("total", getResult()[1]);
 						startActivity(intent);
 					} else {
-						changeNextQuistion ();
+						
 					}
 				}
 			});
@@ -307,7 +327,7 @@ public class Second extends Activity
 		startActivity( new Intent(Second.this,MainActivity.class));
 		finish();
 	}
-private void revealAnswer (){
+/*private void revealAnswer (){
 	final String getanswer=quistionList.get(currentQuistionPosition).getanswer();
 	//final String getuserselectedAnswer=quistionList.get(currentQuistionPosition).getUserSelectedAnswer();
 	if(op1.getText().toString().equals(getanswer)){
@@ -329,8 +349,55 @@ private void revealAnswer (){
 		op4.setBackgroundColor(Color.GREEN);
 		op4.setTextColor(Color.WHITE);
 	}
-}
-private void changeNextQuistion (){
+}*/
+	private void revealCorrectAnswer() {
+		String correctAnswer = quistionList.get(currentQuistionPosition).getanswer();
+
+		// Find the button with the correct answer and change its background and text color
+		if (op1.getText().toString().equals(correctAnswer)) {
+			op1.setBackgroundColor(Color.GREEN);
+			op1.setTextColor(Color.WHITE);
+		} else if (op2.getText().toString().equals(correctAnswer)) {
+			op2.setBackgroundColor(Color.GREEN);
+			op2.setTextColor(Color.WHITE);
+		} else if (op3.getText().toString().equals(correctAnswer)) {
+			op3.setBackgroundColor(Color.GREEN);
+			op3.setTextColor(Color.WHITE);
+		} else if (op4.getText().toString().equals(correctAnswer)) {
+			op4.setBackgroundColor(Color.GREEN);
+			op4.setTextColor(Color.WHITE);
+		}
+	}
+	private void updateQuestion() {
+		currentQuistionPosition++;
+
+		if (currentQuistionPosition == quistionList.size()) {
+			// Show the quiz results if there are no more questions
+			Intent intent = new Intent(Second.this, Third.class);
+			intent.putExtra("SCORE", score);
+			intent.putExtra("QUIZ_NAME", "Quiz 2");
+			startActivity(intent);
+			finish();
+		} else {
+			// Load the next question in the quiz
+			Question question = quistionList.get(currentQuistionPosition);
+			quistions.setText("Question " + (currentQuistionPosition + 1));
+			questionText.setText(question.getQuestion());
+			op1.setText(question.getOp1());
+			op2.setText(question.getOp2());
+			op3.setText(question.getOp3());
+			op4.setText(question.getOp4());
+			op1.setBackgroundColor(Color.WHITE);
+			op2.setBackgroundColor(Color.WHITE);
+			op3.setBackgroundColor(Color.WHITE);
+			op4.setBackgroundColor(Color.WHITE);
+			op1.setTextColor(Color.BLACK);
+			op2.setTextColor(Color.BLACK);
+			op3.setTextColor(Color.BLACK);
+			op4.setTextColor(Color.BLACK);
+		}
+	}
+/*private void changeNextQuistion (){
 	currentQuistionPosition++;
 	if((currentQuistionPosition+1)==quistionList.size()){
 		
@@ -364,7 +431,7 @@ private void changeNextQuistion (){
 	}
 	
 	
-}
+}*/
 
 
 }
