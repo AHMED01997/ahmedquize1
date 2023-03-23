@@ -368,7 +368,7 @@ public class Second extends Activity
 			op4.setTextColor(Color.WHITE);
 		}
 	}
-	private void updateQuestion() {
+	/*private void updateQuestion() {
 		currentQuistionPosition++;
 
 		if (currentQuistionPosition == quistionList.size()) {
@@ -396,8 +396,8 @@ public class Second extends Activity
 			op3.setTextColor(Color.BLACK);
 			op4.setTextColor(Color.BLACK);
 		}
-	}
-/*private void changeNextQuistion (){
+	}*/
+private void changeNextQuistion (){
 	currentQuistionPosition++;
 	if((currentQuistionPosition+1)==quistionList.size()){
 		
@@ -431,7 +431,7 @@ public class Second extends Activity
 	}
 	
 	
-}*/
+}
 
 
 }
