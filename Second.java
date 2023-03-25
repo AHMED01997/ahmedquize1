@@ -14,9 +14,11 @@ public class Second extends Activity
 	private int currentQuistionPosition=0;
 	private String selectedOptionByUser ="";
 	String a ="";
+	String c= "";
 	private Timer quTime;
 	private int totalMinute=0;
 	private  int second =59;
+	boolean hasAnswerdQuestion = false;
 	
 	private List<QuistionList>quistionList;
 	LinearLayout l;
@@ -308,14 +310,24 @@ public class Second extends Activity
 	public int []getResult() {
 		int CorrectAnswer = 0;
 		int incorrectAnswer = 0;
+		hasAnswerdQuestion=false;
 		for (int i = 0; i < quistionList.size(); i++) {
 			String getUserSelectedAnswer = quistionList.get(i).getUserSelectedAnswer();
 			String getanswer = quistionList.get(i).getanswer();
+			
+			
 			if (getUserSelectedAnswer.equals(getanswer)) {
 				CorrectAnswer++;
+				
 			} else {
 				incorrectAnswer++;
-			}
+				
+				
+			
+			
+			
+		}
+		
 		}
 		return new int[]{CorrectAnswer,incorrectAnswer};
 		
@@ -383,6 +395,8 @@ a="anyword";		// Find the button with the correct answer and change its backgrou
 	
 private void changeNextQuistion (){
 	a="";
+	
+	hasAnswerdQuestion=false;
 	currentQuistionPosition++;
 	if((currentQuistionPosition+1)==quistionList.size()){
 		
